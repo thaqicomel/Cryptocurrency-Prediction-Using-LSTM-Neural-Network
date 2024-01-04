@@ -57,16 +57,6 @@ if selected_model_options:
     epochs = st.sidebar.slider('Epochs', min_value=1, max_value=500, value=200)
     batch_size = st.sidebar.slider('Batch Size', min_value=1, max_value=128, value=32)
 
-# Plotting the selected price type
-st.write(f'Plotting {selected_price_type} Price:')
-fig = px.line(data, x='Date', y=selected_price_type, labels={'Date': 'Date', selected_price_type: f'{selected_price_type} Stock'})
-fig.update_traces(marker_line_width=2, opacity=0.8, marker_line_color='orange')
-fig.update_layout(title_text=f'Bitcoin {selected_price_type} Price 2014-2024',
-                  plot_bgcolor='white', font_size=15, font_color='black')
-fig.update_xaxes(showgrid=False)
-fig.update_yaxes(showgrid=False)
-st.plotly_chart(fig)
-
 # Extracting and normalizing the selected price type
 price_df = data[['Date', selected_price_type]]
 del price_df['Date']
